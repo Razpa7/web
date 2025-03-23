@@ -1,0 +1,210 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+
+    --card: 0 0% 10%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 0 0% 10%;
+    --popover-foreground: 0 0% 100%;
+
+    --primary: 0 84% 50%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 0 0% 15%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 0 0% 20%;
+    --muted-foreground: 0 0% 70%;
+
+    --accent: 0 84% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 0 84% 50%;
+
+    --radius: 1rem;
+
+    /* Bingo colors */
+    --bingo-b: 350 90% 65%;
+    --bingo-i: 210 100% 55%;
+    --bingo-n: 160 70% 50%;
+    --bingo-g: 40 95% 55%;
+    --bingo-o: 270 60% 60%;
+    --bingo-selected: 0 84% 50%;
+    --bingo-selected-foreground: 0 0% 100%;
+
+    /* TON colors */
+    --ton: 208 100% 50%;
+    --ton-foreground: 0 0% 100%;
+    --ton-muted: 208 60% 10%;
+
+    /* Sidebar (for chat) */
+    --sidebar-background: 0 0% 10%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 0 84% 50%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 0 0% 15%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 0 0% 20%;
+    --sidebar-ring: 0 84% 50%;
+  }
+
+  .dark {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+
+    --card: 0 0% 10%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 0 0% 10%;
+    --popover-foreground: 0 0% 100%;
+
+    --primary: 0 84% 50%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 0 0% 15%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 0 0% 20%;
+    --muted-foreground: 0 0% 70%;
+
+    --accent: 0 84% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 0 84% 50%;
+
+    /* Bingo colors stay the same in dark mode for visibility */
+    --bingo-b: 350 90% 65%;
+    --bingo-i: 210 100% 60%;
+    --bingo-n: 160 70% 50%;
+    --bingo-g: 40 95% 55%;
+    --bingo-o: 270 60% 70%;
+    --bingo-selected: 0 84% 50%;
+    --bingo-selected-foreground: 0 0% 100%;
+
+    /* TON colors */
+    --ton: 208 100% 55%;
+    --ton-foreground: 0 0% 100%;
+    --ton-muted: 208 30% 15%;
+
+    /* Sidebar (for chat) */
+    --sidebar-background: 0 0% 10%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 0 84% 50%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 0 0% 15%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 0 0% 20%;
+    --sidebar-ring: 0 0% 100%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-feature-settings: "ss01", "ss02", "cv01", "cv02";
+    background-color: #E5DEFF;
+    background-attachment: fixed;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply tracking-tight;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply bg-black/50 backdrop-blur-md border border-red-800/30 shadow-glass;
+  }
+
+  .glass-dark {
+    @apply bg-black/70 backdrop-blur-md border border-red-800/20 shadow-glass;
+  }
+
+  .glass-card {
+    @apply bg-black/70 backdrop-blur-md border border-red-800/30 shadow-subtle rounded-xl transition-all duration-300;
+  }
+
+  .bingo-button {
+    @apply px-5 py-2.5 rounded-xl font-medium transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-opacity-50;
+  }
+
+  .primary-button {
+    @apply bingo-button bg-primary text-primary-foreground hover:bg-primary/90 focus:ring-primary;
+  }
+
+  .secondary-button {
+    @apply bingo-button bg-secondary text-secondary-foreground hover:bg-secondary/80 focus:ring-secondary;
+  }
+
+  .ton-button {
+    @apply bingo-button bg-ton text-ton-foreground hover:bg-ton/90 focus:ring-ton;
+  }
+
+  .bingo-cell {
+    @apply flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 rounded-lg font-medium text-xl md:text-2xl transition-all duration-200 bg-black border border-red-800/50 shadow-subtle;
+  }
+
+  .bingo-cell-selected {
+    @apply border-transparent bg-red-500/30 text-white font-bold;
+  }
+
+  .hover-scale {
+    @apply hover:scale-[1.02] transition-transform duration-200;
+  }
+
+  .shimmer-effect {
+    @apply bg-gradient-to-r from-transparent via-white/20 to-transparent bg-[length:200%_100%] animate-shimmer;
+  }
+  
+  .ton-pattern {
+    background-image: url('/toncoin-logo.png');
+    background-size: 50px 50px;
+    background-repeat: repeat;
+  }
+  
+  /* New casino-themed styles */
+  .casino-card {
+    @apply bg-gradient-to-br from-red-900/80 to-black/90 backdrop-blur-md border border-yellow-600/20 shadow-float rounded-xl transition-all duration-300;
+  }
+  
+  .gold-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-yellow-500 to-yellow-600;
+  }
+  
+  .betting-button {
+    @apply px-5 py-3 rounded-xl font-bold text-white bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] shadow-md;
+  }
+  
+  .winner-row {
+    @apply flex items-center justify-between p-3 border-b border-red-900/30 last:border-0;
+  }
+  
+  .jackpot-display {
+    @apply text-2xl font-bold text-yellow-400 animate-pulse-soft;
+  }
+}
+
+#root {
+  @apply max-w-full m-0 p-0;
+}
